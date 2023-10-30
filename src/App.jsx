@@ -138,10 +138,14 @@ const App = () => {
       <h1>Notes</h1>
       <Notification message={errorMessage} />
 
-      {user === null ?
-      loginForm() :
-      noteForm()
+      {!user && loginForm()} 
+    {user && <div>
+       <p>{user.name} logged in</p>
+         {noteForm()}
+      </div>
     }
+
+    <h2>Notes</h2>
 
       <div>
         <button onClick={() => setShowAll(!showAll)}>
